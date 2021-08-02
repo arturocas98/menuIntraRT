@@ -1,6 +1,5 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
-
 /*ngx Modal*/
 .my-modal-md {
   max-width: 600px !important;
@@ -9,7 +8,7 @@
   border-radius: 4%;
 }
 
-.my-modal-sm .modal-content{
+.my-modal-sm .modal-content {
   border-radius: 4%;
 }
 
@@ -17,7 +16,7 @@
   max-width: 900px !important;
 }
 
-.my-modal-lg .modal-content{
+.my-modal-lg .modal-content {
   border-radius: 4%;
 }
 /**/
@@ -127,6 +126,11 @@
   border-color: transparent;
   border-bottom: none;
   font-weight: bold;
+}
+
+.roundedInput {
+  border: 0;
+  border-radius: 0px 5px 5px 0px;
 }
 
 ::placeholder {

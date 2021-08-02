@@ -48,6 +48,8 @@
 </div>
 
 
+<!-- div informe -->
+
 
 <div id="DivInforme" class="row mb-3 w-100" style="padding-top:1%; height:auto; min-height:100%; background-color:white; 
 display:none; position: absolute; z-index: 9999 !important;">
@@ -83,7 +85,7 @@ display:none; position: absolute; z-index: 9999 !important;">
 </div>
 
 
-
+<!-- div solicitud -->
 
 <div id="DivSolicitud" class="row mb-3 w-100" style="padding-top:1%; height:auto; min-height:100%; background-color:white; 
 display:none; position: absolute; z-index: 9999 !important;">
@@ -109,6 +111,9 @@ display:none; position: absolute; z-index: 9999 !important;">
 
 
 </div>
+
+
+<!-- div documentos -->
 
 
 <div id="DivDocumentos" class="row mb-3 w-100" style="display: none;">
@@ -214,6 +219,9 @@ display:none; position: absolute; z-index: 9999 !important;">
 
 <!-- modales -->
 
+
+<!-- modal macroproceso -->
+
 <ng-template #modalMacroproceso>
 
     <a (click)="modalRefmd.hide()" title="Cerrar" class="closeModal">X</a>
@@ -235,8 +243,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </div>
 
                             <div class="col-md-8">
-                                <input type="text" class="form-control "
-                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="codigo">
+                                <input type="text" class="form-control roundedInput" formControlName="codigo">
                             </div>
 
 
@@ -263,8 +270,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </div>
 
                             <div class="col-md-8">
-                                <input type="text" class="form-control "
-                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="nombre">
+                                <input type="text" class="form-control roundedInput" formControlName="nombre">
                             </div>
 
 
@@ -289,8 +295,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </div>
 
                             <div class="col-md-8">
-                                <textarea class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                    formControlName="descripcion"> </textarea>
+                                <textarea class="form-control roundedInput" formControlName="descripcion"> </textarea>
                             </div>
                         </div>
 
@@ -314,8 +319,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </div>
 
                             <div class="col-md-8">
-                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                    formControlName="tipo_macroproceso">
+                                <select class="form-control roundedInput" formControlName="tipo_macroproceso">
                                     <option value=""> Seleccione </option>
                                     <option *ngFor="let tipo of tipos_macroprocesos" value="{{tipo.Id}}"> {{tipo.Title}}
                                     </option>
@@ -343,13 +347,11 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </label>
 
 
-                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                formControlName="estado" value="A">
+                            <input type="radio" class="form-control roundedInput" formControlName="estado" value="A">
 
                             <label class="mt-2 mr-4 font-weight-bold "> Activo </label>
 
-                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                formControlName="estado" value="I">
+                            <input type="radio" class="form-control roundedInput" formControlName="estado" value="I">
 
                             <label class="mt-2 mr-4 font-weight-bold "> Inactivo </label>
 
@@ -390,7 +392,7 @@ display:none; position: absolute; z-index: 9999 !important;">
     </div>
 </ng-template>
 
-
+<!-- modal proceso -->
 
 <ng-template #modalProceso>
 
@@ -413,9 +415,8 @@ display:none; position: absolute; z-index: 9999 !important;">
                                         *
                                     </span> </label>
 
-                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                    formControlName="macroproceso" (change)="getFilterMacroproceso(macroproceso.value)"
-                                    #macroproceso>
+                                <select class="form-control roundedInput" formControlName="macroproceso"
+                                    (change)="getFilterMacroproceso(macroproceso.value)" #macroproceso>
                                     <option value=""> Seleccione </option>
                                     <option *ngFor="let macroproceso of macroprocesos" value="{{macroproceso.Id}}">
                                         {{macroproceso.Title}}
@@ -442,8 +443,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                                 <label class="mt-2 mr-4 font-weight-bold "> Código <span class="text-danger"> *
                                     </span>
                                 </label>
-                                <input type="text" class="form-control "
-                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="codigo">
+                                <input type="text" class="form-control roundedInput" formControlName="codigo">
 
 
                             </div>
@@ -466,8 +466,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                             <label class="mt-2 mr-4 font-weight-bold "> Nombre <span class="text-danger"> * </span>
                             </label>
 
-                            <input type="text" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                formControlName="nombre">
+                            <input type="text" class="form-control roundedInput" formControlName="nombre">
 
 
                         </div>
@@ -489,8 +488,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                                 </span>
                             </label>
 
-                            <textarea class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                formControlName="objetivo"> </textarea>
+                            <textarea class="form-control roundedInput" formControlName="objetivo"> </textarea>
 
 
                         </div>
@@ -511,8 +509,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                                 <label class="mt-2 mr-4 font-weight-bold "> Dueño del proceso <span class="text-danger">
                                         * </span> </label>
 
-                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                    formControlName="dueno_proceso">
+                                <select class="form-control roundedInput" formControlName="dueno_proceso">
                                     <option value=""> Seleccione </option>
                                     <option *ngFor="let duenoProceso of duenosProcesos"
                                         value="{{duenoProceso.UsuarioList.Id}}">
@@ -537,8 +534,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                                 <label class="mt-2 mr-4 font-weight-bold "> Criticidad <span class="text-danger"> *
                                     </span></label>
 
-                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                    formControlName="criticidad">
+                                <select class="form-control roundedInput" formControlName="criticidad">
                                     <option value=""> Seleccione </option>
                                     <option value="Alto"> Alto </option>
                                     <option value="Medio"> Medio </option>
@@ -592,13 +588,11 @@ display:none; position: absolute; z-index: 9999 !important;">
                             <label class="mt-2 mr-4 font-weight-bold "> Estado <span class="text-danger"> * </span>
                             </label>
 
-                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                formControlName="estado" value="A">
+                            <input type="radio" class="form-control roundedInput" formControlName="estado" value="A">
 
                             <label class="mt-2 mr-4 font-weight-bold "> Activo </label>
 
-                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                formControlName="estado" value="I">
+                            <input type="radio" class="form-control roundedInput" formControlName="estado" value="I">
 
                             <label class="mt-2 mr-4 font-weight-bold "> Inactivo </label>
 
@@ -642,6 +636,8 @@ display:none; position: absolute; z-index: 9999 !important;">
 </ng-template>
 
 
+<!-- modal subproceso -->
+
 <ng-template #modalSubProceso>
 
     <a (click)="modalRefmd.hide()" title="Cerrar" class="closeModal">X</a>
@@ -661,8 +657,8 @@ display:none; position: absolute; z-index: 9999 !important;">
                             <div class="input-group">
                                 <label class="mt-2 mr-4 font-weight-bold "> Procesos <span class="text-danger"> *
                                     </span> </label>
-                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                    formControlName="proceso" (change)="getFilterProceso(proceso.value)" #proceso>
+                                <select class="form-control roundedInput" formControlName="proceso"
+                                    (change)="getFilterProceso(proceso.value)" #proceso>
                                     <option value=""> Seleccione </option>
                                     <option *ngFor="let proceso of procesos" value="{{proceso.Id}}">
                                         {{ proceso.NombreMacroProceso }} - {{proceso.Title}}
@@ -685,8 +681,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                             <div class="input-group">
                                 <label class="mt-2 mr-4 font-weight-bold "> Código <span class="text-danger"> * </span>
                                 </label>
-                                <input type="text" class="form-control "
-                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="codigo">
+                                <input type="text" class="form-control roundedInput" formControlName="codigo">
 
 
                             </div>
@@ -708,8 +703,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                         <div class="input-group">
                             <label class="mt-2 mr-4 font-weight-bold "> Nombre <span class="text-danger"> * </span>
                             </label>
-                            <input type="text" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                formControlName="nombre">
+                            <input type="text" class="form-control roundedInput" formControlName="nombre">
                         </div>
 
                         <div *ngIf="validatorErrorField('nombre',formSubProceso) ">
@@ -727,8 +721,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                         <div class="input-group">
                             <label class="mt-2 mr-4 font-weight-bold "> Objetivo <span class="text-danger"> * </span>
                             </label>
-                            <textarea class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                formControlName="objetivo"> </textarea>
+                            <textarea class="form-control roundedInput" formControlName="objetivo"> </textarea>
                         </div>
 
                         <div *ngIf="validatorErrorField('objetivo',formSubProceso) ">
@@ -772,13 +765,11 @@ display:none; position: absolute; z-index: 9999 !important;">
                         <div class="input-group">
                             <label class="mt-2 mr-4 font-weight-bold "> Estado <span class="text-danger"> * </span>
                             </label>
-                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                formControlName="estado" value="A">
+                            <input type="radio" class="form-control roundedInput" formControlName="estado" value="A">
 
                             <label class="mt-2 mr-4 font-weight-bold "> Activo </label>
 
-                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                formControlName="estado" value="I">
+                            <input type="radio" class="form-control roundedInput" formControlName="estado" value="I">
 
                             <label class="mt-2 mr-4 font-weight-bold "> Inactivo </label>
 
@@ -820,7 +811,7 @@ display:none; position: absolute; z-index: 9999 !important;">
 </ng-template>
 
 
-
+<!-- modal documentos -->
 
 <ng-template #modalDocumentos>
 
@@ -845,8 +836,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </div>
 
                             <div class="col-md-8">
-                                <input type="text" class="form-control "
-                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="codigo">
+                                <input type="text" class="form-control roundedInput" formControlName="codigo">
                             </div>
 
 
@@ -876,8 +866,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </div>
 
                             <div class="col-md-8">
-                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                    formControlName="tipo_documento">
+                                <select class="form-control roundedInput" formControlName="tipo_documento">
                                     <option value=""> Seleccione </option>
                                     <option *ngFor="let tipo of tipos_documentos" value="{{tipo.Id}}">
                                         {{tipo.Title}}
@@ -908,8 +897,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </div>
 
                             <div class="col-md-8">
-                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                    formControlName="tipo_publicacion">
+                                <select class="form-control roundedInput" formControlName="tipo_publicacion">
                                     <option value=""> Seleccione </option>
                                     <option *ngFor="let tipo of tipos_publicacion" value="{{tipo.Id}}">
                                         {{tipo.Title}}
@@ -940,9 +928,8 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </div>
 
                             <div class="col-md-8">
-                                <input type="file" class="form-control" (change)="uploadArchivo($event)"
-                                    accept=".xlsx,.xls,.doc,.docx,.ppt,.pptx,.pdf"
-                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="archivo">
+                                <input type="file" class="form-control" roundedInput (change)="uploadArchivo($event)"
+                                    accept=".xlsx,.xls,.doc,.docx,.ppt,.pptx,.pdf" formControlName="archivo">
                             </div>
 
 
@@ -969,8 +956,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </div>
 
                             <div class="col-md-8">
-                                <textarea class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                    formControlName="descripcion"> </textarea>
+                                <textarea class="form-control roundedInput" formControlName="descripcion"> </textarea>
                             </div>
 
                         </div>
@@ -1119,13 +1105,11 @@ display:none; position: absolute; z-index: 9999 !important;">
                                 </label>
                             </div>
 
-                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                formControlName="estado" value="A">
+                            <input type="radio" class="form-control roundedInput" formControlName="estado" value="A">
 
                             <label class="mt-2 mr-4 font-weight-bold "> Activo </label>
 
-                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                formControlName="estado" value="I">
+                            <input type="radio" class="form-control roundedInput" formControlName="estado" value="I">
 
                             <label class="mt-2 mr-4 font-weight-bold "> Inactivo </label>
 
@@ -1224,8 +1208,8 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </div>
 
                             <div class="col-md-8">
-                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                    #usuario (change)="obtenerUsuario(usuario.value,'Autorizador')">
+                                <select class="form-control roundedInput" #usuario
+                                    (change)="obtenerUsuario(usuario.value,'Autorizador')">
                                     <option value=""> Seleccione </option>
                                     <option *ngFor="let usuario of usuarios" value="{{usuario.Id}}">
                                         {{usuario.Title}}
@@ -1248,8 +1232,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </div>
 
                             <div class="col-md-8">
-                                <input type="text" class="form-control " readonly
-                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="nombre">
+                                <input type="text" class="form-control roundedInput" readonly formControlName="nombre">
                             </div>
 
                         </div>
@@ -1266,8 +1249,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </div>
 
                             <div class="col-md-8">
-                                <input type="text" class="form-control " readonly
-                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="userId">
+                                <input type="text" class="form-control roundedInput" readonly formControlName="userId">
                             </div>
 
                         </div>
@@ -1283,8 +1265,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                                 <label class="mt-2 mr-4 font-weight-bold "> Rol </label>
                             </div>
                             <div class="col-md-8">
-                                <input type="text" class="form-control " readonly
-                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="rol">
+                                <input type="text" class="form-control roundedInput" readonly formControlName="rol">
                             </div>
 
                         </div>
@@ -1301,8 +1282,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </div>
 
                             <div class="col-md-8">
-                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                    formControlName="tipo_autorizador">
+                                <select class="form-control roundedInput" formControlName="tipo_autorizador">
                                     <option value=""> Seleccione </option>
                                     <option *ngFor="let tipo of tiposEjAut" value="{{tipo.ID}}">
                                         {{tipo.Title}}
@@ -1333,13 +1313,11 @@ display:none; position: absolute; z-index: 9999 !important;">
                                 </label>
                             </div>
 
-                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                formControlName="estado" value="A">
+                            <input type="radio" class="form-control roundedInput" formControlName="estado" value="A">
 
                             <label class="mt-2 mr-4 font-weight-bold "> Activo </label>
 
-                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                formControlName="estado" value="I">
+                            <input type="radio" class="form-control roundedInput" formControlName="estado" value="I">
 
                             <label class="mt-2 mr-4 font-weight-bold "> Inactivo </label>
 
@@ -1405,8 +1383,8 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </div>
 
                             <div class="col-md-8">
-                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                    #usuario (change)="obtenerUsuario(usuario.value,'Ejecutor')">
+                                <select class="form-control roundedInput" #usuario
+                                    (change)="obtenerUsuario(usuario.value,'Ejecutor')">
                                     <option value=""> Seleccione </option>
                                     <option *ngFor="let usuario of usuarios" value="{{usuario.Id}}">
                                         {{usuario.Title}}
@@ -1429,8 +1407,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </div>
 
                             <div class="col-md-8">
-                                <input type="text" class="form-control " readonly
-                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="nombre">
+                                <input type="text" class="form-control roundedInput" readonly formControlName="nombre">
                             </div>
 
                         </div>
@@ -1447,8 +1424,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </div>
 
                             <div class="col-md-8">
-                                <input type="text" class="form-control " readonly
-                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="userId">
+                                <input type="text" class="form-control roundedInput" readonly formControlName="userId">
                             </div>
 
                         </div>
@@ -1464,8 +1440,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                                 <label class="mt-2 mr-4 font-weight-bold "> Rol </label>
                             </div>
                             <div class="col-md-8">
-                                <input type="text" class="form-control " readonly
-                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="rol">
+                                <input type="text" class="form-control roundedInput" readonly formControlName="rol">
                             </div>
 
                         </div>
@@ -1482,8 +1457,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                             </div>
 
                             <div class="col-md-8">
-                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                    formControlName="tipo_ejecutor">
+                                <select class="form-control roundedInput" formControlName="tipo_ejecutor">
                                     <option value=""> Seleccione </option>
                                     <option *ngFor="let tipo of tiposEjAut" value="{{tipo.ID}}">
                                         {{tipo.Title}}
@@ -1513,13 +1487,11 @@ display:none; position: absolute; z-index: 9999 !important;">
                                 </label>
                             </div>
 
-                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                formControlName="estado" value="A">
+                            <input type="radio" class="form-control roundedInput" formControlName="estado" value="A">
 
                             <label class="mt-2 mr-4 font-weight-bold "> Activo </label>
 
-                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
-                                formControlName="estado" value="I">
+                            <input type="radio" class="form-control roundedInput" formControlName="estado" value="I">
 
                             <label class="mt-2 mr-4 font-weight-bold "> Inactivo </label>
 
