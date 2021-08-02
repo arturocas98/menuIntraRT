@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "menu-intra-rgt-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/menuIntraRgt/MenuIntraRgtWebPart.js",
+          "manifest": "./src/webparts/menuIntraRgt/MenuIntraRgtWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "jquery": {
+      "path": "node_modules/jquery/dist/jquery.js",
+      "globalName": "jquery"
+    },
+    "popper": {
+      "path": "node_modules/popper.js/dist/umd/popper.min.js",
+      "globalName": "popper"
+    },
+    "bootstrap": {
+      "path": "node_modules/bootstrap/dist/js/bootstrap.min.js",
+      "globalName": "bootstrap",
+      "globalDependencies": [
+        "jquery",
+        "popper"
+      ]
+    },
+    "BrowserModule": "node_modules/@angular/platform-browser/src/platform-browser.js",
+    "NgModule": "node_modules/@angular/core/src/core.js",
+    "CommonModule": "node_modules/@angular/common/src/commonmodule.js",
+    "FormsModule": "node_modules/@angular/forms/src/formsmodule.js",
+    "HttpModule": "node_modules/@angular/http/src/httpmodule.js",
+    "NgbModule": "node_modules/@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js"
+  },
+  "localizedResources": {
+    "MenuIntraRgtWebPartStrings": "lib/webparts/menuIntraRgt/loc/{locale}.js"
+  }
+}

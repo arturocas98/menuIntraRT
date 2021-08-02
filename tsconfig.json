@@ -1,0 +1,52 @@
+{
+  "extends": "./node_modules/@microsoft/rush-stack-compiler-3.3/includes/tsconfig-web.json",
+  "compilerOptions": {
+    "paths": {
+      "@angular/*": [
+        "./node_modules/@angular/*"
+      ]
+    },
+    "baseUrl": "/",
+    "target": "es5",
+    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "outDir": "lib",
+    "inlineSources": false,
+    "strictNullChecks": false,
+    "noUnusedLocals": false,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/@microsoft"
+    ],
+    "types": [
+      "es6-promise",
+      "webpack-env",
+      
+    ],
+    "lib": [
+      "es5",
+      "dom",
+      "es2015.collection",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  "files": [
+    "./src/polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.ts",
+    "**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib"
+  ]
+}

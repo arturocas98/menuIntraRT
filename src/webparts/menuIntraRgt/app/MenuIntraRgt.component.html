@@ -1,0 +1,1561 @@
+<div class="container-fluid" style="position: relative; z-index:1">
+
+    <div class="row" class="barra-menu" style="padding:0.5%;">
+        <div align="center" class="col-md-12">
+
+            <button class="btn_menu_rgt btnprimary ml-2" id="btnInforme" type="button">
+                <img id="imgInforme" src="{{sitio}}/ImagenesIntranet/informe-blanco.png" />
+
+
+                Informes
+            </button>
+
+
+            <button class="btn_menu_rgt btnprimary ml-2" id="btnSolicitud" type="button">
+                <img id="imgSolicitud" src="{{sitio}}/ImagenesIntranet/solicitud-blanco.png" />
+
+
+                Solicitudes
+            </button>
+
+            <button class="btn_menu_rgt btnprimary ml-2" id="btnDocumentos" type="button">
+                <img id="imgDocumentos" src="{{sitio}}/ImagenesIntranet/documento-blanco.png" />
+
+
+                Documentos
+            </button>
+
+
+            <button class="btn_menu_rgt btnprimary ml-2" id="btnEncuesta" type="button">
+                <img id="imgEncuesta" src="{{sitio}}/ImagenesIntranet/encuesta-blanco.png" />
+
+
+                Encuesta
+            </button>
+
+            <button class="btn_menu_rgt btnprimary ml-2" id="btnAyuda" type="button">
+                <img id="imgAyuda" src="{{sitio}}/ImagenesIntranet/ayudar-blanco.png" />
+
+
+                Ayuda
+            </button>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="DivInforme" class="row mb-3 w-100" style="padding-top:1%; height:auto; min-height:100%; background-color:white; 
+display:none; position: absolute; z-index: 9999 !important;">
+
+    <div class="col-md-12">
+
+        <div class="tab-content" id="pills-tabContent">
+
+
+            <div class=" tab-pane fade show active " id="pills-tab" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                <div class="row" style="text-align:center;justify-content: right;">
+
+                    <div class="col-md-4">
+                        <h1>Contenido 1</h1>
+                    </div>
+
+                    <div class="col-md-3">
+                        <h1>Contenido 2</h1>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h1>Contenido 3</h1>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+<div id="DivSolicitud" class="row mb-3 w-100" style="padding-top:1%; height:auto; min-height:100%; background-color:white; 
+display:none; position: absolute; z-index: 9999 !important;">
+
+    <div class="col-md-12">
+
+        <div class="tab-content" id="pills-tabContent">
+
+
+            <div class=" tab-pane fade show active " id="pills-tab" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                <div class="row" style="text-align:center;justify-content: right;">
+                    <div class="col-md-12">
+                        <h1>
+                            contenido solicitud
+                        </h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<div id="DivDocumentos" class="row mb-3 w-100" style="display: none;">
+
+    <div class="col-md-12">
+
+        <div class="tab-content" id="pills-tabContentDocumentos">
+
+
+            <div class=" tab-pane fade show active " id="pills-tab" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                <div class="row" style="text-align:center; padding-top:3%;">
+                    <div class="col-md-12">
+                        <button class="btn_menu_rgt btnprimary ml-2" (click)="openModal(modalMacroproceso)"
+                            type="button" style="border-radius: 11px!important;">
+
+
+                            <span class="m-2"> Macroproceso</span>
+                        </button>
+
+
+                        <button class="btn_menu_rgt btnprimary ml-2" type="button" (click)="openModal(modalProceso)"
+                            style="border-radius: 11px!important;">
+
+
+                            <span class="m-2">Proceso</span>
+
+                        </button>
+
+                        <button class="btn_menu_rgt btnprimary ml-2" type="button"
+                            style="border-radius: 11px!important;" (click)="openModal(modalSubProceso)">
+
+                            <span class="m-2">Subproceso</span>
+
+                        </button>
+
+                        <button class="btn_menu_rgt btnprimary ml-2" type="button"
+                            style="border-radius: 11px!important;" (click)="openModalLg(modalDocumentos)">
+
+                            <span class="m-2">Documentos</span>
+
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div id="DivEncuesta" class="row mb-3 w-100" style="padding-top:1%; height:auto; min-height:100%; background-color:white; 
+display:none; position: absolute; z-index: 9999 !important;">
+
+    <div class="col-md-12">
+
+        <div class="tab-content" id="pills-tabContent">
+
+
+            <div class=" tab-pane fade show active " id="pills-tab" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                <div class="row" style="text-align:center; padding-top:3%;">
+                    <div class="col-md-12">
+                        <h1>
+                            Contenido encuesta
+                        </h1>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div id="DivAyuda" class="row mb-3 w-100" style="padding-top:1%; height:auto; min-height:100%; background-color:white; 
+display:none; position: absolute; z-index: 9999 !important;">
+
+    <div class="col-md-12">
+
+        <div class="tab-content" id="pills-tabContent">
+
+
+            <div class=" tab-pane fade show active " id="pills-tab" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                <div class="row" style="text-align:center; padding-top:3%;">
+                    <div class="col-md-12">
+                        <h1>
+                            Contenido ayuda
+                        </h1>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- modales -->
+
+<ng-template #modalMacroproceso>
+
+    <a (click)="modalRefmd.hide()" title="Cerrar" class="closeModal">X</a>
+    <h2 class="tituloModal">Macroproceso</h2>
+
+
+    <div class="modal-body rounded-5" style="background-color: #f6f6f6;border-radius: 0px 0px 11px 11px;">
+
+        <div class="row mt-2" style="justify-content: center;">
+            <form [formGroup]="form" class="ml-5" (ngSubmit)="onSubmitMacroproceso()">
+                <div id="divForm" class="row">
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Código <span class="text-danger"> * </span>
+                                </label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <input type="text" class="form-control "
+                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="codigo">
+                            </div>
+
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('codigo',form) ">
+
+                            <p class="text-danger" *ngIf="form.get('codigo').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Nombre <span class="text-danger"> *
+                                    </span></label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <input type="text" class="form-control "
+                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="nombre">
+                            </div>
+
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('nombre',form) ">
+
+                            <p class="text-danger" *ngIf="form.get('nombre').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Descripción <span class="text-danger"> *
+                                    </span></label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <textarea class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                    formControlName="descripcion"> </textarea>
+                            </div>
+                        </div>
+
+                        <div *ngIf="validatorErrorField('descripcion',form) ">
+
+                            <p class="text-danger" *ngIf="form.get('descripcion').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Tipo de macroproceso <span
+                                        class="text-danger">
+                                        * </span> </label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                    formControlName="tipo_macroproceso">
+                                    <option value=""> Seleccione </option>
+                                    <option *ngFor="let tipo of tipos_macroprocesos" value="{{tipo.Id}}"> {{tipo.Title}}
+                                    </option>
+                                </select>
+                            </div>
+
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('tipo_macroproceso',form) ">
+
+                            <p class="text-danger" *ngIf="form.get('tipo_macroproceso').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+
+                            <label class="mt-2 mr-4 ml-3 font-weight-bold "> Estado <span class="text-danger"> * </span>
+                            </label>
+
+
+                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                formControlName="estado" value="A">
+
+                            <label class="mt-2 mr-4 font-weight-bold "> Activo </label>
+
+                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                formControlName="estado" value="I">
+
+                            <label class="mt-2 mr-4 font-weight-bold "> Inactivo </label>
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('estado',form) ">
+
+                            <p class="text-danger" *ngIf="form.get('estado').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <br />
+
+                <div id="divForm1" class="row" style="padding: 0px 20px;">
+                    <div class="col-md-12 center">
+
+                        <button class="botonRegistraModal mb-2" type="submit">
+                            Registrar
+                        </button>
+
+                        <button class="botonCancelarModal mb-2" (click)="modalRefmd.hide()" type="button">
+                            Cancelar
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+</ng-template>
+
+
+
+<ng-template #modalProceso>
+
+    <a (click)="modalRefmd.hide()" title="Cerrar" class="closeModal">X</a>
+    <h2 class="tituloModal">Proceso</h2>
+
+
+    <div class="modal-body rounded-5" style="background-color: #f6f6f6;border-radius: 0px 0px 11px 11px;">
+
+        <div class="row mt-2" style="justify-content: center;">
+            <form [formGroup]="formProceso" class="ml-5" (ngSubmit)="onSubmitProceso()">
+                <div id="divForm" class="row">
+
+                    <div class="row mb-2">
+
+                        <div class="col-md-6">
+
+                            <div class="input-group">
+                                <label class="mt-2 mr-4 font-weight-bold "> Macroprocesos <span class="text-danger">
+                                        *
+                                    </span> </label>
+
+                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                    formControlName="macroproceso" (change)="getFilterMacroproceso(macroproceso.value)"
+                                    #macroproceso>
+                                    <option value=""> Seleccione </option>
+                                    <option *ngFor="let macroproceso of macroprocesos" value="{{macroproceso.Id}}">
+                                        {{macroproceso.Title}}
+                                    </option>
+                                </select>
+
+
+
+                            </div>
+
+                            <div *ngIf="validatorErrorField('macroproceso',formProceso)">
+
+                                <p class="text-danger" *ngIf="formProceso.get('macroproceso').hasError('required')">El
+                                    campo es
+                                    requerido </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <label class="mt-2 mr-4 font-weight-bold "> Código <span class="text-danger"> *
+                                    </span>
+                                </label>
+                                <input type="text" class="form-control "
+                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="codigo">
+
+
+                            </div>
+
+                            <div *ngIf="validatorErrorField('codigo',formProceso) ">
+
+                                <p class="text-danger" *ngIf="formProceso.get('codigo').hasError('required')">El
+                                    campo es
+                                    requerido </p>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <label class="mt-2 mr-4 font-weight-bold "> Nombre <span class="text-danger"> * </span>
+                            </label>
+
+                            <input type="text" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                formControlName="nombre">
+
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('nombre',formProceso) ">
+
+                            <p class="text-danger" *ngIf="formProceso.get('nombre').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <label class="mt-2 mr-4 font-weight-bold "> Objetivo <span class="text-danger"> *
+                                </span>
+                            </label>
+
+                            <textarea class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                formControlName="objetivo"> </textarea>
+
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('objetivo',formProceso) ">
+
+                            <p class="text-danger" *ngIf="formProceso.get('objetivo').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <label class="mt-2 mr-4 font-weight-bold "> Dueño del proceso <span class="text-danger">
+                                        * </span> </label>
+
+                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                    formControlName="dueno_proceso">
+                                    <option value=""> Seleccione </option>
+                                    <option *ngFor="let duenoProceso of duenosProcesos"
+                                        value="{{duenoProceso.UsuarioList.Id}}">
+                                        {{duenoProceso.Title}}
+                                    </option>
+                                </select>
+
+
+                            </div>
+
+                            <div *ngIf="validatorErrorField('dueno_proceso',formProceso) ">
+
+                                <p class="text-danger" *ngIf="formProceso.get('dueno_proceso').hasError('required')">El
+                                    campo es
+                                    requerido </p>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <label class="mt-2 mr-4 font-weight-bold "> Criticidad <span class="text-danger"> *
+                                    </span></label>
+
+                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                    formControlName="criticidad">
+                                    <option value=""> Seleccione </option>
+                                    <option value="Alto"> Alto </option>
+                                    <option value="Medio"> Medio </option>
+                                    <option value="Bajo"> Bajo </option>
+                                </select>
+
+
+                            </div>
+
+                            <div *ngIf="validatorErrorField('criticidad',formProceso) ">
+
+                                <p class="text-danger" *ngIf="formProceso.get('criticidad').hasError('required')">El
+                                    campo es
+                                    requerido </p>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+
+                            <label class="mt-2 mr-4 font-weight-bold "> Certificación <span class="text-danger"> *
+                                </span> </label>
+
+
+                            <div class="col-md-8">
+                                <div id="checkboxList" class="col-md-12" *ngFor="let certificacion of certificaciones">
+                                    <input type="checkbox" id="{{certificacion.Id}}" value="{{certificacion.Id}}"
+                                        formControlName="certificacion" [checked]="certificacion.isSelected"
+                                        (change)="isAllSelected(certificacion)" />
+                                    <label for="cbox2">
+                                        {{ certificacion.Title }}
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <label class="mt-2 mr-4 font-weight-bold "> Estado <span class="text-danger"> * </span>
+                            </label>
+
+                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                formControlName="estado" value="A">
+
+                            <label class="mt-2 mr-4 font-weight-bold "> Activo </label>
+
+                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                formControlName="estado" value="I">
+
+                            <label class="mt-2 mr-4 font-weight-bold "> Inactivo </label>
+
+
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('estado',formProceso) ">
+
+                            <p class="text-danger" *ngIf="formProceso.get('estado').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <br />
+
+                <div id="divForm1" class="row" style="padding: 0px 20px;">
+                    <div class="col-md-12 center">
+
+                        <button class="botonRegistraModal mb-2" type="submit">
+                            Registrar
+                        </button>
+
+                        <button class="botonCancelarModal mb-2" (click)="modalRefmd.hide()" type="button">
+                            Cancelar
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+</ng-template>
+
+
+<ng-template #modalSubProceso>
+
+    <a (click)="modalRefmd.hide()" title="Cerrar" class="closeModal">X</a>
+    <h2 class="tituloModal">SubProceso</h2>
+
+
+    <div class="modal-body rounded-5" style="background-color: #f6f6f6;border-radius: 0px 0px 11px 11px;">
+
+        <div class="row mt-2" style="justify-content: center;">
+            <form [formGroup]="formSubProceso" class="ml-5" (ngSubmit)="onSubmitSubProceso()">
+                <div id="divForm" class="row">
+
+                    <div class="row mb-2">
+
+                        <div class="col-md-6">
+
+                            <div class="input-group">
+                                <label class="mt-2 mr-4 font-weight-bold "> Procesos <span class="text-danger"> *
+                                    </span> </label>
+                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                    formControlName="proceso" (change)="getFilterProceso(proceso.value)" #proceso>
+                                    <option value=""> Seleccione </option>
+                                    <option *ngFor="let proceso of procesos" value="{{proceso.Id}}">
+                                        {{ proceso.NombreMacroProceso }} - {{proceso.Title}}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div *ngIf="validatorErrorField('proceso',formSubProceso)">
+
+                                <p class="text-danger" *ngIf="formSubProceso.get('proceso').hasError('required')">El
+                                    campo es
+                                    requerido </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <label class="mt-2 mr-4 font-weight-bold "> Código <span class="text-danger"> * </span>
+                                </label>
+                                <input type="text" class="form-control "
+                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="codigo">
+
+
+                            </div>
+
+                            <div *ngIf="validatorErrorField('codigo',formSubProceso) ">
+
+                                <p class="text-danger" *ngIf="formSubProceso.get('codigo').hasError('required')">El
+                                    campo es
+                                    requerido </p>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <label class="mt-2 mr-4 font-weight-bold "> Nombre <span class="text-danger"> * </span>
+                            </label>
+                            <input type="text" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                formControlName="nombre">
+                        </div>
+
+                        <div *ngIf="validatorErrorField('nombre',formSubProceso) ">
+
+                            <p class="text-danger" *ngIf="formSubProceso.get('nombre').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <label class="mt-2 mr-4 font-weight-bold "> Objetivo <span class="text-danger"> * </span>
+                            </label>
+                            <textarea class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                formControlName="objetivo"> </textarea>
+                        </div>
+
+                        <div *ngIf="validatorErrorField('objetivo',formSubProceso) ">
+
+                            <p class="text-danger" *ngIf="formSubProceso.get('objetivo').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Certificación <span class="text-danger"> *
+                                    </span> </label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <div id="checkboxList" class="col-md-12" *ngFor="let certificacion of certificaciones">
+                                    <input type="checkbox" id="{{certificacion.Id}}" value="{{certificacion.Id}}"
+                                        formControlName="certificacion" [checked]="certificacion.isSelected"
+                                        (change)="isAllSelected(certificacion)" />
+                                    <label for="cbox2">
+                                        {{ certificacion.Title }}
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <label class="mt-2 mr-4 font-weight-bold "> Estado <span class="text-danger"> * </span>
+                            </label>
+                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                formControlName="estado" value="A">
+
+                            <label class="mt-2 mr-4 font-weight-bold "> Activo </label>
+
+                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                formControlName="estado" value="I">
+
+                            <label class="mt-2 mr-4 font-weight-bold "> Inactivo </label>
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('estado',formSubProceso) ">
+
+                            <p class="text-danger" *ngIf="formSubProceso.get('estado').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <br />
+
+                <div id="divForm1" class="row" style="padding: 0px 20px;">
+                    <div class="col-md-12 center">
+
+                        <button class="botonRegistraModal mb-2" type="submit">
+                            Registrar
+                        </button>
+
+                        <button class="botonCancelarModal mb-2" (click)="modalRefmd.hide()" type="button">
+                            Cancelar
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+</ng-template>
+
+
+
+
+<ng-template #modalDocumentos>
+
+    <a (click)="modalRefLg.hide()" title="Cerrar" class="closeModal">X</a>
+    <h2 class="tituloModal">Documentos</h2>
+
+
+    <div class="modal-body rounded-5" style="background-color: #f6f6f6;border-radius: 0px 0px 11px 11px;">
+
+        <div class="row mt-2" style="justify-content: center;">
+            <form [formGroup]="formDocumentos" class="ml-5" (ngSubmit)="onSubmitDocumentos()">
+                <div id="divForm" class="row">
+
+
+
+                    <div class="col-md-12 mb-2">
+                        <div class="input-group">
+
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Código <span class="text-danger"> * </span>
+                                </label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <input type="text" class="form-control "
+                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="codigo">
+                            </div>
+
+
+
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('codigo',formDocumentos) ">
+
+                            <p class="text-danger" *ngIf="formDocumentos.get('codigo').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Tipo de documento
+                                    <span class="text-danger"> * </span>
+                                </label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                    formControlName="tipo_documento">
+                                    <option value=""> Seleccione </option>
+                                    <option *ngFor="let tipo of tipos_documentos" value="{{tipo.Id}}">
+                                        {{tipo.Title}}
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('tipo_documento',formDocumentos)">
+
+                            <p class="text-danger" *ngIf="formDocumentos.get('tipo_documento').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Tipo de Publicación
+                                    <span class="text-danger"> * </span>
+                                </label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                    formControlName="tipo_publicacion">
+                                    <option value=""> Seleccione </option>
+                                    <option *ngFor="let tipo of tipos_publicacion" value="{{tipo.Id}}">
+                                        {{tipo.Title}}
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('tipo_publicacion',formDocumentos)">
+
+                            <p class="text-danger" *ngIf="formDocumentos.get('tipo_publicacion').hasError('required')">
+                                El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Archivo <span class="text-danger"> * </span>
+                                </label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <input type="file" class="form-control" (change)="uploadArchivo($event)"
+                                    accept=".xlsx,.xls,.doc,.docx,.ppt,.pptx,.pdf"
+                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="archivo">
+                            </div>
+
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('archivo',formDocumentos) ">
+
+                            <p class="text-danger" *ngIf="formDocumentos.get('archivo').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Descripción <span class="text-danger"> *
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <textarea class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                    formControlName="descripcion"> </textarea>
+                            </div>
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('descripcion',formDocumentos) ">
+
+                            <p class="text-danger" *ngIf="formDocumentos.get('descripcion').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Directorio <span class="text-danger"> *
+                                    </span> </label>
+                            </div>
+
+                            <div class="col-md-8">
+
+                                <button class="btn_menu_rgt btnprimary ml-2" type="button"
+                                    style="border-radius: 11px!important;" (click)="openModalSm(modalDirectorio)">
+
+                                    <span class="m-2">Seleccionar</span>
+
+                                </button>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link active" id="nav-Autorizadores-tab" data-toggle="tab"
+                                    href="#nav-Autorizadores" role="tab" aria-controls="nav-Autorizadores"
+                                    aria-selected="true">
+
+                                    Autorizadores
+                                </a>
+                                <a class="nav-item nav-link" id="nav-Ejecutores-tab" data-toggle="tab"
+                                    href="#nav-Ejecutores" role="tab" aria-controls="nav-Ejecutores"
+                                    aria-selected="false">
+                                    Ejecutores
+
+                                </a>
+                            </div>
+                        </nav>
+
+                        <div class="tab-content" id="nav-tabContent">
+
+                            <div class="tab-pane fade show active" id="nav-Autorizadores" role="tabpanel"
+                                aria-labelledby="nav-Autorizadores-tab"
+                                style="overflow: auto;height: 130px;overflow-x: hidden; ">
+                                <div class="row">
+                                    <div class="col-md-4 mt-2 mr-2">
+                                        <button class="botonRegistraModal mb-2" type="button"
+                                            (click)="openModalSm(modalAutorizadores)">
+                                            Nuevo
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Nombre</th>
+                                                <th scope="col">UserId</th>
+                                                <th scope="col">Rol</th>
+                                                <th scope="col">Tipo(Obl/Opc)</th>
+                                                <th scope="col"> Estado </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let persona of autorizadores">
+                                                <th>{{ persona.Title }}</th>
+                                                <td> {{persona.UserId}} </td>
+                                                <td> {{ persona.Rol }} </td>
+                                                <td> {{ getTipoEjecutorAutorizador(persona.TipoUsuarioId) }} </td>
+                                                <td> {{ persona.Estado }} </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                            <div class="tab-pane fade" id="nav-Ejecutores" role="tabpanel"
+                                aria-labelledby="nav-Ejecutores-tab"
+                                style="overflow: auto;height: 130px;overflow-x: hidden;">
+                                <div class="row">
+                                    <div class="col-md-4 mt-2 mr-2">
+                                        <button class="botonRegistraModal mb-2" type="button"
+                                            (click)="openModalSm(modalEjecutores)">
+                                            Nuevo
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Nombre</th>
+                                                <th scope="col">UserId</th>
+                                                <th scope="col">Rol</th>
+                                                <th scope="col">Tipo(Obl/Opc)</th>
+                                                <th scope="col"> Estado </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let persona of ejecutores">
+                                                <th>{{ persona.Title }}</th>
+                                                <td> {{persona.UserId}} </td>
+                                                <td> {{ persona.Rol }} </td>
+                                                <td> {{ getTipoEjecutorAutorizador(persona.TipoUsuarioId) }} </td>
+                                                <td> {{ persona.Estado }} </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Estado <span class="text-danger"> * </span>
+                                </label>
+                            </div>
+
+                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                formControlName="estado" value="A">
+
+                            <label class="mt-2 mr-4 font-weight-bold "> Activo </label>
+
+                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                formControlName="estado" value="I">
+
+                            <label class="mt-2 mr-4 font-weight-bold "> Inactivo </label>
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('estado',formDocumentos) ">
+
+                            <p class="text-danger" *ngIf="formDocumentos.get('estado').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <br />
+
+                <div id="divForm1" class="row" style="padding: 0px 20px;">
+                    <div class="col-md-12 center">
+
+                        <button class="botonRegistraModal mb-2" type="submit">
+                            Registrar
+                        </button>
+
+                        <button class="botonCancelarModal mb-2" (click)="modalRefLg.hide()" type="button">
+                            Cancelar
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+</ng-template>
+
+
+
+<ng-template #modalDirectorio>
+
+    <a (click)="modalRefSm.hide()" title="Cerrar" class="closeModal">X</a>
+    <h2 class="tituloModal">Directorio</h2>
+
+
+    <div class="modal-body rounded-5" style="background-color: #f6f6f6;border-radius: 0px 0px 11px 11px;">
+
+
+        <h1> Arbol de directorios en construcción ⚠️👷🏻 </h1>
+
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum enim eum, itaque voluptate fugit doloremque,
+            praesentium ea, amet neque inventore debitis. Inventore quasi harum neque velit eos culpa aut odio expedita
+            nesciunt nobis itaque pariatur numquam aliquam ducimus nulla dolorum ipsa asperiores, nam saepe voluptate
+            voluptatibus modi quidem dolores. Maiores optio, delectus similique eum aliquam possimus harum voluptatum
+            atque asperiores consequuntur placeat tempora sequi vitae velit, omnis molestiae rem expedita dolore modi.
+            Pariatur sint nulla aperiam assumenda alias dolore laborum est ab iste nihil. Possimus qui dolor, nihil
+            numquam at debitis repudiandae suscipit ea, est tenetur voluptatum sit ullam odit illum necessitatibus
+            laboriosam nulla voluptate ipsa distinctio magnam quam nostrum rem harum ducimus. Magnam deserunt, incidunt
+            alias voluptas consequatur fuga nemo dolorum tempora corporis molestiae amet reiciendis possimus ex
+            excepturi magni perspiciatis sapiente rem doloremque accusantium at veritatis, itaque totam. Dolores libero
+            voluptate harum minima suscipit quod ad quisquam! Dignissimos, et. Ea facilis quia esse, sit incidunt error,
+            debitis nihil repellendus fugit tenetur cumque id earum velit. Perspiciatis inventore, dignissimos dicta
+            atque vero explicabo iusto sequi molestiae optio amet voluptatem odio ex nobis dolores labore,
+            necessitatibus commodi eum! Quae unde totam eum optio architecto accusantium necessitatibus vero voluptates
+            iusto sint?
+        </p>
+
+
+    </div>
+</ng-template>
+
+
+<ng-template #modalAutorizadores>
+
+    <a (click)="modalRefSm.hide()" title="Cerrar" class="closeModal">X</a>
+    <h2 class="tituloModal">Autorizadores</h2>
+
+
+    <div class="modal-body rounded-5" style="background-color: #f6f6f6;border-radius: 0px 0px 11px 11px;">
+
+        <div class="row mt-2" style="justify-content: center;">
+            <form [formGroup]="formAutorizadores" class="ml-5" (ngSubmit)="onSubmitAutorizadores()">
+                <div id="divForm" class="row">
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold ">
+                                    Buscar
+                                </label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                    #usuario (change)="obtenerUsuario(usuario.value,'Autorizador')">
+                                    <option value=""> Seleccione </option>
+                                    <option *ngFor="let usuario of usuarios" value="{{usuario.Id}}">
+                                        {{usuario.Title}}
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold ">
+                                    Nombre
+                                </label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <input type="text" class="form-control " readonly
+                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="nombre">
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> UserId </label>
+
+                            </div>
+
+                            <div class="col-md-8">
+                                <input type="text" class="form-control " readonly
+                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="userId">
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Rol </label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control " readonly
+                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="rol">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Tipo<span class="text-danger">
+                                        * </span> </label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                    formControlName="tipo_autorizador">
+                                    <option value=""> Seleccione </option>
+                                    <option *ngFor="let tipo of tiposEjAut" value="{{tipo.ID}}">
+                                        {{tipo.Title}}
+                                    </option>
+                                </select>
+                            </div>
+
+
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('tipo_autorizador',formAutorizadores) ">
+
+                            <p class="text-danger"
+                                *ngIf="formAutorizadores.get('tipo_autorizador').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Estado <span class="text-danger"> * </span>
+                                </label>
+                            </div>
+
+                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                formControlName="estado" value="A">
+
+                            <label class="mt-2 mr-4 font-weight-bold "> Activo </label>
+
+                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                formControlName="estado" value="I">
+
+                            <label class="mt-2 mr-4 font-weight-bold "> Inactivo </label>
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('estado',formAutorizadores) ">
+
+                            <p class="text-danger" *ngIf="formAutorizadores.get('estado').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <br />
+
+                <div id="divForm1" class="row" style="padding: 0px 20px;">
+                    <div class="col-md-12 center">
+
+                        <button class="botonRegistraModal mb-2" type="submit">
+                            Registrar
+                        </button>
+
+                        <button class="botonCancelarModal mb-2" (click)="modalRefSm.hide()" type="button">
+                            Cancelar
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+</ng-template>
+
+
+
+
+<ng-template #modalEjecutores>
+
+    <a (click)="modalRefSm.hide()" title="Cerrar" class="closeModal">X</a>
+    <h2 class="tituloModal">Ejecutores</h2>
+
+
+    <div class="modal-body rounded-5" style="background-color: #f6f6f6;border-radius: 0px 0px 11px 11px;">
+
+        <div class="row mt-2" style="justify-content: center;">
+            <form [formGroup]="formEjecutores" class="ml-5" (ngSubmit)="onSubmitEjecutores()">
+                <div id="divForm" class="row">
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold ">
+                                    Buscar
+                                </label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                    #usuario (change)="obtenerUsuario(usuario.value,'Ejecutor')">
+                                    <option value=""> Seleccione </option>
+                                    <option *ngFor="let usuario of usuarios" value="{{usuario.Id}}">
+                                        {{usuario.Title}}
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold ">
+                                    Nombre
+                                </label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <input type="text" class="form-control " readonly
+                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="nombre">
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> UserId </label>
+
+                            </div>
+
+                            <div class="col-md-8">
+                                <input type="text" class="form-control " readonly
+                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="userId">
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Rol </label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control " readonly
+                                    style="border: 0; border-radius: 0px 5px 5px 0px;" formControlName="rol">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Tipo<span class="text-danger">
+                                        * </span> </label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <select class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                    formControlName="tipo_ejecutor">
+                                    <option value=""> Seleccione </option>
+                                    <option *ngFor="let tipo of tiposEjAut" value="{{tipo.ID}}">
+                                        {{tipo.Title}}
+                                    </option>
+                                </select>
+                            </div>
+
+
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('tipo_ejecutor',formEjecutores) ">
+
+                            <p class="text-danger" *ngIf="formEjecutores.get('tipo_ejecutor').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <label class="mt-2 mr-4 font-weight-bold "> Estado <span class="text-danger"> * </span>
+                                </label>
+                            </div>
+
+                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                formControlName="estado" value="A">
+
+                            <label class="mt-2 mr-4 font-weight-bold "> Activo </label>
+
+                            <input type="radio" class="form-control " style="border: 0; border-radius: 0px 5px 5px 0px;"
+                                formControlName="estado" value="I">
+
+                            <label class="mt-2 mr-4 font-weight-bold "> Inactivo </label>
+
+                        </div>
+
+                        <div *ngIf="validatorErrorField('estado',formEjecutores) ">
+
+                            <p class="text-danger" *ngIf="formEjecutores.get('estado').hasError('required')">El
+                                campo es
+                                requerido </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <br />
+
+                <div id="divForm1" class="row" style="padding: 0px 20px;">
+                    <div class="col-md-12 center">
+
+                        <button class="botonRegistraModal mb-2" type="submit">
+                            Registrar
+                        </button>
+
+                        <button class="botonCancelarModal mb-2" (click)="modalRefSm.hide()" type="button">
+                            Cancelar
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+</ng-template>
