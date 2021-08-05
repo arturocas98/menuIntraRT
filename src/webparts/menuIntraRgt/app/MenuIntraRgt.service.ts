@@ -33,7 +33,7 @@ export class MenuIntraRgtService {
         return sp.web.lists.getByTitle("Usuarios").items.get();
     }
 
-    public ObtenerDatosUsuarioById(url) {
+    public getDataRestApiSharepoint(url) {
         let encabezado: HttpHeaders;
         encabezado = new HttpHeaders()
             .append('Accept', "application/json; odata=verbose");
@@ -72,6 +72,11 @@ export class MenuIntraRgtService {
 
     public obtenerTiposEjecutoresAutorizadores(): Promise<any> {
         return sp.web.lists.getByTitle("Tipos de Autorizadores y Ejecutores").items.get();
+    }
+
+    public obtenerFoldersBibliotecaDocumentos(){
+        return sp.web.lists.getByTitle("Centro de Documentación").items.get();
+
     }
 
 }

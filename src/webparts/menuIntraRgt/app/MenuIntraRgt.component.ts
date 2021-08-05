@@ -13,7 +13,18 @@ import { Web } from "@pnp/sp";
 
 import Swal from 'sweetalert2';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { TreeGridComponent } from '@syncfusion/ej2-angular-treegrid';
+import { L10n, setCulture } from '@syncfusion/ej2-base';
 
+setCulture('es-ES');
+
+L10n.load({
+    'es-ES': {
+        grid: {
+            EmptyRecord: "No se encontraron datos",
+        }
+    }
+});
 
 
 @Component({
@@ -25,10 +36,12 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class MenuIntraRgtComponent implements OnInit {
 
-
+    /* public treegrid: TreeGridComponent; */
     public contextoWebPart: IWebPartContext;
     public propiedadesWebPart: any;
-
+    public dataTreeView: any = [];
+    public dataTreeGrid: any = [];
+    public field: Object;
     public menu: Array<any> = [];
 
     public documentos: Array<any> = [];
@@ -50,19 +63,20 @@ export class MenuIntraRgtComponent implements OnInit {
     public procesos: Array<any> = [];
     public tipos_documentos: Array<any> = [];
     public tipos_publicacion: Array<any> = [];
-    public autorizadores: Array<any> = [];
-    public ejecutores: Array<any> = [];
+    public autorizadores: any = [];
+    public ejecutores: any = [];
     public tiposEjAut: Array<any> = [];
     public usuarios: Array<any> = [];
     public registraEjecutor: Boolean = false;
     public registraAutorizador: Boolean = false;
-    public autorizadorID: any;
-    public ejecutorID: any;
 
     public modalRefmd: BsModalRef | null;
     public modalRefSm: BsModalRef;
     public modalRefLg: BsModalRef;
     public archivo: File;
+    public documentosBiblioteca: any = [];
+    public selectDirectorio: any;
+
     constructor(
         private service: MenuIntraRgtService,
         public formBuilder: FormBuilder,
@@ -98,12 +112,15 @@ export class MenuIntraRgtComponent implements OnInit {
         this.initFormDocumentos();
         this.initFormAutorizadores();
         this.initFormEjecutores();
+        this.getAllFolders();
 
 
         this.service.obtenerProcesos().then(datos => {
             this.procesos = datos;
-            console.log("procesos:",this.procesos);
+            console.log("procesos:", this.procesos);
         });
+
+
 
         /* this.service.obtenerDocumentos().then(datosDoc => {
             console.log("datos doc:", datosDoc);
@@ -134,7 +151,7 @@ export class MenuIntraRgtComponent implements OnInit {
 
             let url = this.sitio + "/_api/web/siteusers";
             let getAllUsersInSite = [];
-            this.service.ObtenerDatosUsuarioById(url).subscribe(response => {
+            this.service.getDataRestApiSharepoint(url).subscribe(response => {
                 let allUserSite = response.d.results;
 
                 for (const i in allUserSite) {
@@ -161,18 +178,18 @@ export class MenuIntraRgtComponent implements OnInit {
     }
 
     public getAutorizadores() {
-        this.service.obtenerAutorizadores().then(datos => {
+        /* this.service.obtenerAutorizadores().then(datos => {
             let datos_filtrados = datos.filter(autorizador => autorizador.DocumentoIdId == null);
 
             this.autorizadores = datos_filtrados;
-        });
+        }); */
     }
 
     public getEjecutores() {
-        this.service.obtenerEjecutores().then(datos => {
+        /* this.service.obtenerEjecutores().then(datos => {
             let datos_filtrados = datos.filter(ejecutor => ejecutor.DocumentoIdId == null);
             this.ejecutores = datos_filtrados;
-        });
+        }); */
     }
 
     public getTiposEjecutoresAutorizadores() {
@@ -181,14 +198,20 @@ export class MenuIntraRgtComponent implements OnInit {
         });
     }
 
-    public changeTipoEjecutorAutorizador(){
+    public changeTipoEjecutorAutorizador() {
 
     }
 
-    public getTipoEjecutorAutorizador(id) {
-        let tipo_filter = this.tiposEjAut.filter(tipo => tipo.Id = id);
-        return tipo_filter[0].Title;
+    public getTipoAutorizador(id) {
+        /* let tipo_filter = this.tiposEjAut.filter(tipo => tipo.Id = id);
+        return tipo_filter[0].Title; */
+        return id == '1' ? "Obligatorio" : "Opcional";
 
+    }
+
+    public getTipoEjecutor(id) {
+        /* console.log("id ejecutor:",id); */
+        return id == '1' ? "Obligatorio" : "Opcional";
     }
 
     /**Rellena los formularios de Autorizadores y ejecutores con la informacion obtenida del usuario seleccionado */
@@ -199,7 +222,7 @@ export class MenuIntraRgtComponent implements OnInit {
         /* let url = this.sitio + "/_api/SP.UserProfiles.PeopleManager/GetPropertiesFor(accountName=@v)?@v='" +accountName+ "'"; */
         let usuarioFilter = this.duenosProcesos.filter(usuario => usuario.UsuarioList.UsuarioId[0] == id);
         /* console.log("usuario filtrado rol:", usuarioFilter); */
-        this.service.ObtenerDatosUsuarioById(url).subscribe(response => {
+        this.service.getDataRestApiSharepoint(url).subscribe(response => {
             if (tipo == "Autorizador") {
                 this.formAutorizadores.controls['nombre'].setValue(response.d.Title);
                 this.formAutorizadores.controls['userId'].setValue(response.d.UserId.NameId);
@@ -291,7 +314,7 @@ export class MenuIntraRgtComponent implements OnInit {
             tipo_publicacion: ['', [Validators.required]],
             archivo: ['', [Validators.required]],
             descripcion: ['', [Validators.required, Validators.pattern(/[A-Za-z0-9\s]*/)]],
-            directorio: [''],
+            directorio: ['', [Validators.required]],
             estado: ['', [Validators.required]],
         });
     }
@@ -656,6 +679,7 @@ export class MenuIntraRgtComponent implements OnInit {
         }
     }
 
+    /**Método para capturar el archivo y validar si esta entre los formatos permitidos */
     uploadArchivo(event) {
         let archivoObtenido = event.target.files[0];
 
@@ -680,6 +704,16 @@ export class MenuIntraRgtComponent implements OnInit {
         if (this.form.valid) {
             this.presentaAlert('loading');
             const lista = await sp.web.lists.getByTitle('Macroproceso');
+
+            /* const folderAddResult = await sp.web.folders.add("folder url");
+
+            sp.web.lists.getByTitle("Centro de Documentación").rootFolder.folders.add("Prueba").then(data => {
+                data.folder.get().then(result=>{
+                    console.log("resultado de la carpeta creada:",result);
+                });
+            }).catch(err => {
+                console.log("erro en la creación de la carpeta raíz:",err.message);
+            }); */
 
             await lista.items.add({
                 Title: this.form.controls['nombre'].value,
@@ -787,8 +821,9 @@ export class MenuIntraRgtComponent implements OnInit {
         this.presentaAlert('loading');
 
         if (this.formDocumentos.valid) {
-            let directorio = sp.web.getFolderByServerRelativeUrl("/sites/IntranetRT/Centro%20de%20Documentacin/Prueba");
-            if (this.registraEjecutor && this.registraAutorizador) {
+            console.log("directorio de la carpeta:", this.selectDirectorio.Ruta);
+            let directorio = sp.web.getFolderByServerRelativeUrl(this.selectDirectorio.Ruta);
+            if (this.autorizadores.length > 0 && this.ejecutores.length > 0) {
                 if (this.archivo.size <= 10485760) {
 
                     // small upload
@@ -798,11 +833,11 @@ export class MenuIntraRgtComponent implements OnInit {
                             console.log(this.archivo.name + " upload successfully!");
                             let autorizadores = [];
                             let ejecutores = [];
-                            for(const i in this.autorizadores){
+                            for (const i in this.autorizadores) {
                                 autorizadores.push(this.autorizadores[i].Title)
                             }
 
-                            for(const i in this.ejecutores){
+                            for (const i in this.ejecutores) {
                                 ejecutores.push(this.ejecutores[i].Title)
                             }
 
@@ -813,12 +848,13 @@ export class MenuIntraRgtComponent implements OnInit {
                                 Codigo: this.formDocumentos.controls['codigo'].value,
                                 TipoDocumentoId: this.formDocumentos.controls['tipo_documento'].value,
                                 TipoPublicacionId: this.formDocumentos.controls['tipo_publicacion'].value,
-                                Autorizadores:autorizadores.toString(),
-                                Ejecutores:ejecutores.toString()
+                                Autorizadores: autorizadores.toString(),
+                                Ejecutores: ejecutores.toString(),
+                                padreId: this.selectDirectorio.Id.toString()
 
                             }).then(r => {
-                               
-                               
+
+
                                 this.actualizaAutorizador(listItemAllFields.Id);
                                 this.actualizaEjecutor(listItemAllFields.Id);
                                 this.formDocumentos.reset();
@@ -884,7 +920,7 @@ export class MenuIntraRgtComponent implements OnInit {
     public async onSubmitAutorizadores() {
         console.log("form:", this.formAutorizadores);
         this.presentaAlert('loading');
- 
+
         if (this.formAutorizadores.valid) {
             const lista = await sp.web.lists.getByTitle('Autorizadores');
 
@@ -900,14 +936,13 @@ export class MenuIntraRgtComponent implements OnInit {
                 result.item.get().then(item => {
                     console.log("item:", item);
 
-                    this.autorizadorID = item.Id;
+                    this.autorizadores.push(item);
 
                 });
                 this.presentaAlert('close')
                 this.presentaAlert('success', '');
                 this.formAutorizadores.reset();
                 this.registraAutorizador = true;
-                this.getAutorizadores();
             }).catch(err => {
                 this.presentaAlert('close');
             });
@@ -919,7 +954,7 @@ export class MenuIntraRgtComponent implements OnInit {
     public async onSubmitEjecutores() {
         console.log("form:", this.formEjecutores);
         this.presentaAlert('loading');
-    
+
         if (this.formEjecutores.valid) {
             const lista = await sp.web.lists.getByTitle('Ejecutores');
 
@@ -936,14 +971,13 @@ export class MenuIntraRgtComponent implements OnInit {
                 result.item.get().then(item => {
                     console.log("item ejecutor :", item);
 
-                    this.ejecutorID = item.Id;
+                    this.ejecutores.push(item);
 
                 });
                 this.presentaAlert('close')
                 this.presentaAlert('success', '');
                 this.formEjecutores.reset();
                 this.registraEjecutor = true;
-                this.getEjecutores();
             }).catch(err => {
                 this.presentaAlert('close');
             });
@@ -954,16 +988,135 @@ export class MenuIntraRgtComponent implements OnInit {
 
 
     public async actualizaAutorizador(id) {
-        await sp.web.lists.getByTitle("Autorizadores").items.getById(this.autorizadorID).update({
-            DocumentoIdId: id,
-        });
+        for (const i in this.autorizadores) {
+            await sp.web.lists.getByTitle("Autorizadores").items.getById(this.autorizadores[i].Id).update({
+                DocumentoIdId: id,
+            });
+        }
+
 
     }
 
     public async actualizaEjecutor(id) {
-        await sp.web.lists.getByTitle("Ejecutores").items.getById(this.ejecutorID).update({
-            DocumentoIdId: id,
+        for (const i in this.ejecutores) {
+            await sp.web.lists.getByTitle("Ejecutores").items.getById(this.ejecutores[i].Id).update({
+                DocumentoIdId: id,
+            });
+        }
+
+    }
+
+
+    public getAllFolders() {
+        let url = this.sitio + "/_api/web/lists/getbytitle('Centro de Documentación')/items?$select=FileRef,Title,padreId,Id,Modified";
+        this.service.getDataRestApiSharepoint(url).subscribe((resp: any) => {
+            /* console.log("resp:",resp); */
+            let data = resp.d.results;
+            /* console.log("data:",data); */
+            let hijos = [];
+            data.forEach(folder => {
+                if (folder.Title != null) {
+                    for (const i in data) {
+                        if (data[i].Title != null) {
+
+                            if (folder.padreId.toString() == data[i].ID.toString()) {
+                                hijos.push(folder);
+                                data[i].subChild = hijos.filter(hijo => hijo.padreId == data[i].Id.toString());
+                                this.documentosBiblioteca.push(data[i]);
+                                /* this.documentosBiblioteca.push(data[i]); */
+                            }
+                        }
+                    }
+                }
+            });
+            this.documentosBiblioteca.map(documentos=>{
+               documentos.id = documentos.Id;
+               documentos.name = documentos.Title;
+               documentos.expanded = true;
+               documentos.subChild = documentos.subChild;
+
+            });
+            console.log("carpetas Padres:", this.documentosBiblioteca);
+            /* for (const i in this.documentosBiblioteca) {
+               
+                this.dataTreeView.push(
+
+                    {
+                        id: this.documentosBiblioteca[i].Id,
+                        name: this.documentosBiblioteca[i].Title,
+                        expanded: true,
+                        subChild: [
+                            {
+                                id: this.documentosBiblioteca[i].hijos.Id,
+                                name: this.documentosBiblioteca[i].hijos.Title,
+                               
+                            },
+                        ]
+                    }
+
+                )
+            } */
+            this.field = { dataSource: this.documentosBiblioteca, id: 'id', text: 'name', child: 'subChild' };
+
+
+            /**TreeGrid */
+            for (const j in this.documentosBiblioteca) {
+                this.dataTreeGrid.push(
+                    {
+                        Id: this.documentosBiblioteca[j].Id,
+                        nombre: this.documentosBiblioteca[j].Title,
+                        modificado: new Date(this.documentosBiblioteca[j].Modified),
+                        Ruta: this.documentosBiblioteca[j].FileRef,
+                        isInExpandState: true,
+                        hijo: [
+                            {
+                                Id: this.documentosBiblioteca[j].hijos.Id,
+                                nombre: this.documentosBiblioteca[j].hijos.Title,
+                                modificado: new Date(this.documentosBiblioteca[j].hijos.Modified),
+                                Ruta: this.documentosBiblioteca[j].hijos.FileRef,
+                            },
+
+                        ]
+                    }
+                );
+            }
+
+
+
         });
+
+    }
+
+    public selectFolder(data) {
+        console.log("data select:", data);
+        this.selectDirectorio = data;
+        this.formDocumentos.controls['directorio'].setValue(data.nombre);
+        this.modalRefmd.hide();
+
+    }
+
+    public limpiarDirectorio() {
+        this.formDocumentos.controls['directorio'].setValue("");
+    }
+
+
+    public async cerrarModalDocumentos() {
+        this.modalRefLg.hide();
+        let listAutorizadores = sp.web.lists.getByTitle("Autorizadores");
+
+        for (const i in this.autorizadores) {
+            console.log("autorizadores[id]: ", this.autorizadores[i].Id);
+            await listAutorizadores.items.getById(this.autorizadores[i].Id).delete();
+        }
+
+        let listEjecutores = sp.web.lists.getByTitle("Ejecutores");
+
+        for (const j in this.ejecutores) {
+            await listEjecutores.items.getById(this.ejecutores[j].Id).delete();
+        }
+        this.autorizadores = [];
+        this.ejecutores = [];
+
     }
 
 

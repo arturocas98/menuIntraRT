@@ -160,6 +160,25 @@ display:none; position: absolute; z-index: 9999 !important;">
                     </div>
                 </div>
 
+                <div class="row mt-4">
+                    <div class="col-md-1">
+
+                    </div>
+                    <div class="col-md-10" style="text-align: left;border-bottom: 1px solid #cc001e;">
+                        <b style="color:#cc001e;"> Centro de documentación</b>
+                    </div>
+                    <div class="col-md-1">
+
+                    </div>
+                </div>
+
+
+                <div class="row mt-2 ml-3">
+                    <div id='treeparent'>
+                        <ejs-treeview id='treeelement' [fields]='field'></ejs-treeview>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -977,16 +996,49 @@ display:none; position: absolute; z-index: 9999 !important;">
                             <div class="col-md-4">
                                 <label class="mt-2 mr-4 font-weight-bold "> Directorio <span class="text-danger"> *
                                     </span> </label>
+
                             </div>
 
                             <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-8">
 
-                                <button class="btn_menu_rgt btnprimary ml-2" type="button"
-                                    style="border-radius: 11px!important;" (click)="openModalSm(modalDirectorio)">
+                                        <input type="text" class="form-control roundedInput"
+                                            formControlName="directorio" readonly>
+                                        <span class="input-group-append bg-transparent"
+                                            style="border-radius: 0px 5px 5px 0px;">
 
-                                    <span class="m-2">Seleccionar</span>
+                                            <a (click)="limpiarDirectorio()" title="Cerrar" class="clearDirectory">X</a>
 
-                                </button>
+                                        </span>
+
+
+                                    </div>
+                                    
+                                    <div class="col-md-4">
+                                        <button class="btn_menu_rgt btnprimary ml-2" type="button"
+                                            style="border-radius: 11px!important;" (click)="openModal(modalDirectorio)">
+
+                                            <span class="m-2">Seleccionar</span>
+
+                                        </button>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+                            </div>
+
+                            <div *ngIf="validatorErrorField('directorio',formDocumentos) ">
+
+                                <p class="text-danger" *ngIf="formDocumentos.get('directorio').hasError('required')">El
+                                    campo es
+                                    requerido </p>
+
                             </div>
 
                         </div>
@@ -1044,7 +1096,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                                                 <th>{{ persona.Title }}</th>
                                                 <td> {{persona.UserId}} </td>
                                                 <td> {{ persona.Rol }} </td>
-                                                <td> {{ getTipoEjecutorAutorizador(persona.TipoUsuarioId) }} </td>
+                                                <td> {{ getTipoAutorizador(persona.TipoUsuarioId) }} </td>
                                                 <td> {{ persona.Estado }} </td>
                                             </tr>
                                         </tbody>
@@ -1081,7 +1133,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                                                 <th>{{ persona.Title }}</th>
                                                 <td> {{persona.UserId}} </td>
                                                 <td> {{ persona.Rol }} </td>
-                                                <td> {{ getTipoEjecutorAutorizador(persona.TipoUsuarioId) }} </td>
+                                                <td> {{ getTipoEjecutor(persona.TipoUsuarioId) }} </td>
                                                 <td> {{ persona.Estado }} </td>
                                             </tr>
 
@@ -1138,7 +1190,7 @@ display:none; position: absolute; z-index: 9999 !important;">
                             Registrar
                         </button>
 
-                        <button class="botonCancelarModal mb-2" (click)="modalRefLg.hide()" type="button">
+                        <button class="botonCancelarModal mb-2" (click)="cerrarModalDocumentos()" type="button">
                             Cancelar
                         </button>
                     </div>
@@ -1154,33 +1206,37 @@ display:none; position: absolute; z-index: 9999 !important;">
 
 <ng-template #modalDirectorio>
 
-    <a (click)="modalRefSm.hide()" title="Cerrar" class="closeModal">X</a>
+    <a (click)="modalRefmd.hide()" title="Cerrar" class="closeModal">X</a>
     <h2 class="tituloModal">Directorio</h2>
 
 
     <div class="modal-body rounded-5" style="background-color: #f6f6f6;border-radius: 0px 0px 11px 11px;">
+        <div class="ml-2 row font-weight-bold mb-2">
+            <span>
+                Seleccione el directorio donde desea guardar el archivo:
+            </span>
+        </div>
+        <ejs-treegrid [dataSource]='dataTreeGrid' [treeColumnIndex]='1' childMapping='hijo'>
+            <e-columns>
+                <e-column field='Id' headerText='Id' textAlign='Right' width=70></e-column>
+                <e-column field='nombre' headerText='Nombre' textAlign='Left' width=200></e-column>
+                <e-column field='modificado' headerText='Modificado' textAlign='Right' format='yMd' width=150>
+                </e-column>
+                <!-- <e-column field='duration' headerText='Duración' textAlign='Right' width=80></e-column> -->
 
+                <e-column textAlign='Left' width='100'>
+                    <ng-template #template let-data>
+                        <button class="btn btn-xs  btn-fill" (click)="selectFolder(data)">
+                            <!-- <i class="fa fa-edit"></i> -->
+                            <img id="imgCheck" src="{{sitio}}/ImagenesIntranet/checkRT.png" />
+                            <!-- Seleccionar -->
+                        </button>
 
-        <h1> Arbol de directorios en construcción ⚠️👷🏻 </h1>
+                    </ng-template>
+                </e-column>
 
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum enim eum, itaque voluptate fugit doloremque,
-            praesentium ea, amet neque inventore debitis. Inventore quasi harum neque velit eos culpa aut odio expedita
-            nesciunt nobis itaque pariatur numquam aliquam ducimus nulla dolorum ipsa asperiores, nam saepe voluptate
-            voluptatibus modi quidem dolores. Maiores optio, delectus similique eum aliquam possimus harum voluptatum
-            atque asperiores consequuntur placeat tempora sequi vitae velit, omnis molestiae rem expedita dolore modi.
-            Pariatur sint nulla aperiam assumenda alias dolore laborum est ab iste nihil. Possimus qui dolor, nihil
-            numquam at debitis repudiandae suscipit ea, est tenetur voluptatum sit ullam odit illum necessitatibus
-            laboriosam nulla voluptate ipsa distinctio magnam quam nostrum rem harum ducimus. Magnam deserunt, incidunt
-            alias voluptas consequatur fuga nemo dolorum tempora corporis molestiae amet reiciendis possimus ex
-            excepturi magni perspiciatis sapiente rem doloremque accusantium at veritatis, itaque totam. Dolores libero
-            voluptate harum minima suscipit quod ad quisquam! Dignissimos, et. Ea facilis quia esse, sit incidunt error,
-            debitis nihil repellendus fugit tenetur cumque id earum velit. Perspiciatis inventore, dignissimos dicta
-            atque vero explicabo iusto sequi molestiae optio amet voluptatem odio ex nobis dolores labore,
-            necessitatibus commodi eum! Quae unde totam eum optio architecto accusantium necessitatibus vero voluptates
-            iusto sint?
-        </p>
-
+            </e-columns>
+        </ejs-treegrid>
 
     </div>
 </ng-template>

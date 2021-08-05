@@ -7,7 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenuIntraRgtComponent } from './app/MenuIntraRgt.component';
 import { MenuIntraRgtService } from './app/MenuIntraRgt.service';
 import { ModalModule } from 'ngx-bootstrap';
-
+import { TreeGridModule } from '@syncfusion/ej2-angular-treegrid';
+import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ModalModule } from 'ngx-bootstrap';
         FormsModule,
         ReactiveFormsModule,
         ModalModule.forRoot(),
-       
+        TreeGridModule,
+        TreeViewModule 
     ],
     
     providers: [

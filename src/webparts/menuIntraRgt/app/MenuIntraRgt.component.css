@@ -1,5 +1,23 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
+@import "../../../../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../../../../node_modules/@syncfusion/ej2-angular-navigations/styles/material.css";
+@import "../../../../node_modules/@syncfusion/ej2-inputs/styles/material.css";
+@import "../../../../node_modules/@syncfusion/ej2-buttons/styles/material.css";
+
+
+@import '../../../../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../../../../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../../../../node_modules/@syncfusion/ej2-calendars/styles/material.css';
+@import '../../../../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';
+@import '../../../../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../../../../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+@import '../../../../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../../../../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import '../../../../node_modules/@syncfusion/ej2-grids/styles/material.css';
+@import '../../../../node_modules/@syncfusion/ej2-treegrid/styles/material.css';
+
+
 /*ngx Modal*/
 .my-modal-md {
   max-width: 600px !important;
@@ -70,6 +88,25 @@
   text-decoration: none !important;
 }
 .closeModal:hover {
+  background: #bdbdbd !important;
+  color: #bdbdbd !important;
+}
+
+.clearDirectory{
+  background: #e9ecef !important;
+  color: #cc001e !important;
+  line-height: 3.5rem;
+  position: absolute;
+  right: 1rem;
+  text-align: center;
+  top: -10px;
+  width: 25px;
+  font-weight: 700;
+  height: 0;
+  text-decoration: none !important;
+}
+
+.clearDirectory:hover {
   background: #bdbdbd !important;
   color: #bdbdbd !important;
 }
